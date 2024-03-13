@@ -1,0 +1,16 @@
+{
+  "name": "test.raitichan.net",
+  "displayName": "Test",
+  "version": "1.0.0",
+  "unity": "2022.3",
+  "description": "Test",
+  "author": {
+	  "name": "Raitichan",
+	  "email": "",
+	  "url": "https://github.com/raiti-chan"
+  },
+  "url": "",
+  "repo": "",
+  "vpmDependencies": {
+  }
+}
