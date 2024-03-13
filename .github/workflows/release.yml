@@ -27,13 +27,13 @@ jobs:
 
       - name: Get Package Version
         id: package_version
-        uses: notiz-dev/github-action-json-property@a5a9c668b16513c737c3e1f8956772c99c73f6e8
+        uses: notiz-dev/github-action-json-property@release
         with:
           path: "package.json"
           prop_path: "version"
 
       - name: Set dst json name
-        run: echo "jsonFile=vpm-test-${{ steps.package_version.outputs.prop }}.json" >> $GITHUB_ENV
+        run: echo "jsonFile=test.raitichan.net-${{ steps.package_version.outputs.prop }}.json" >> $GITHUB_ENV
 
       - name: Copy package.json
         run: cp package.json ${{ env.jsonFile }}
@@ -45,20 +45,20 @@ jobs:
         with:
           source_file: ${{ env.jsonFile }}
           destination_repo: "raiti-chan/vpm-repo"
-          destination_folder: "packages/vpm-test"
+          destination_folder: "packages/test.raitichan.net"
           destination_branch: "main"
-          destination_branch_create: "release/vpm-test-${{ steps.package_version.outputs.prop }}"
+          destination_branch_create: "release/test.raitichan.net-${{ steps.package_version.outputs.prop }}"
           user_email: "github-actions[bot]@users.noreply.github.com"
           user_name: "github-actions[bot]"
-          commit_message: "Release vpm-test ${{ steps.package_version.outputs.prop }}"
+          commit_message: "Release test.raitichan.net ${{ steps.package_version.outputs.prop }}"
 
       - name: Create Pull Request
         run: |
           gh pr create\
-            --title "Release vpm-test ${{ steps.package_version.outputs.prop }}" \
-            --body "Release vpm-test ${{ steps.package_version.outputs.prop }}" \
+            --title "Release test.raitichan.net ${{ steps.package_version.outputs.prop }}" \
+            --body "Release test.raitichan.net ${{ steps.package_version.outputs.prop }}" \
             --repo "raiti-chan/vpm-repo" \
             --base main \
-            --head release/vpm-test-${{ steps.package_version.outputs.prop }}
+            --head release/test.raitichan.net-${{ steps.package_version.outputs.prop }}
         env:
           GH_TOKEN: ${{ steps.generate_token.outputs.token }}
